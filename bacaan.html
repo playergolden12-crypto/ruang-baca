@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Bacaan | Ruang Baca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Merriweather', serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #061629;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #061629;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .reading-card {
+            background-color: white;
+            max-width: 720px;
+            margin: 40px auto;
+            padding: 35px;
+            border-radius: 12px;
+            border-left: 6px solid #061629;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .reading-card h3 {
+            color: #061629;
+        }
+
+        .reading-card p {
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .reading-card p:first-of-type::first-letter {
+            font-size: 3em;
+            font-weight: bold;
+            float: left;
+            margin-right: 10px;
+            color: #061629;
+        }
+
+        /* KOMENTAR */
+        .comment-section {
+            margin-top: 40px;
+        }
+
+        .comment input,
+        .comment textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-family: inherit;
+        }
+
+        .comment button {
+            background-color: #fa013f;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .comment-box {
+            background: #fa013f;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 18px;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Daftar Bacaan</h1>
+    <p>Silakan membaca dan berdiskusi</p>
+</header>
+
+<nav>
+    <a href="index.html">Beranda</a>
+    <a href="bacaan.html">Bacaan</a>
+</nav>
+
+<div class="reading-card">
+    <h3>How To Explain The Feealings</h3>
+
+    <p>
+        I will Start here, idk how can I explain about what I feel, but im so fkin love her ,im so fkin realy realy wan to show them what I feel to her but I don’t have that courage, and if she said “I Just Need Reassurance” and then a im so confused.
+I realy want to say it but in another side im not ready for a relationship, that’s why im so confused 
+I don’t know what I can do, im so afraid to losing him but I know its too soon to express feelings.
+
+    </p>
+
+    <p>
+        I hope he still has that love until I'm really ready, why im not ready? 
+Cause we so hard to make interaction, but i really want us to be able to talk to each other and express our feelings to each other.
+I made this because my head is really noisy.
+Honestly, I'm not forcing him to continue loving me, but I really want to take this chance.
+
+    </p>
+    Back On story 
+    <p>
+
+    </p>
+    At first I realy had close my heart to everyone but idk, when I meet her on mataf I realy impressed 
+Because she so attractive to me, That's where this feeling first emerged.
+But im still love him in silence long enough ,until one moment someone said he likes me too
+people" force us to immortalize the moment, and on that day we also immortalized 2 moments, but after that night she he put someone's photo on his Instagram, and i got a little bit heart break.
+<p>
+
+    <p>After that moment I wiil try to I tried to look like nothing happened.
+And until now where we already know that we love each other, but I'm really confused about how I should express it and where to start.
+That's my story today to get rid of this feeling of anxiety and I think it's quite healing,but it is not really a medicine.
+If you are reading this I just want to say thank you.
+</p>
+</p>
+
+    <div class="comment-section">
+        <h4>Komentar</h4>
+
+        <div id="comments"></div>
+
+        <div class="comment">
+            <input id="name" placeholder="Nama">
+            <textarea id="text" rows="4" placeholder="Tulis komentar..."></textarea>
+            <button onclick="addComment()">Kirim</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Ruang Baca By Ricky</p>
+</footer>
+
+<script>
+    const commentsDiv = document.getElementById("comments");
+
+    function loadComments() {
+        const data = JSON.parse(localStorage.getItem("comments")) || [];
+        commentsDiv.innerHTML = "";
+        data.forEach(c => {
+            const div = document.createElement("div");
+            div.className = "comment-box";
+            div.innerHTML = "<strong>" + c.name + "</strong><br>" + c.text;
+            commentsDiv.appendChild(div);
+        });
+    }
+
+    function addComment() {
+        const name = document.getElementById("name").value;
+        const text = document.getElementById("text").value;
+
+        if (!name || !text) return alert("Lengkapi komentar");
+
+        const data = JSON.parse(localStorage.getItem("comments")) || [];
+        data.push({ name, text });
+        localStorage.setItem("comments", JSON.stringify(data));
+
+        document.getElementById("name").value = "";
+        document.getElementById("text").value = "";
+
+        loadComments();
+    }
+
+    loadComments();
+</script>
+
+</body>
+</html>
